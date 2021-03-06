@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './App.css'
 
 export const App = () => {
+  const [incompleteTodos, setIncompleteTodos] = useState(['todo 1', 'todo 2'])
   return (
     <>
     {/* 完了エリア */}

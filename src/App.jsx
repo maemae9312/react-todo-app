@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './App.css'
 
 export const App = () => {
+  const [incompleteTodos, setIncompleteTodos] = useState(['todo 1', 'todo 2'])
+
+  const [completeTodos, setcompleteTodos] = useState(['todo 3'])
   return (
     <>
     {/* 完了エリア */}
@@ -14,16 +17,15 @@ export const App = () => {
       <div className='incomplete-area' >
         <p className='title' >Unfinished TODO</p>
         <ul>
-          <div className='list-row' >
-            <li>todo 1</li>
-            <button>Done</button>
-            <button>Delete</button>
-          </div>
-          <div className='list-row' >
-            <li>todo 2</li>
-            <button>Done</button>
-            <button>Delete</button>
-          </div>
+          {incompleteTodos.map((todo) => {
+            return (
+              <div key={todo} className='list-row' >
+                <li>{todo}</li>
+                <button>Done</button>
+                <button>Delete</button>
+              </div>
+            )
+          })}
         </ul>
       </div>
 
@@ -31,10 +33,14 @@ export const App = () => {
       <div className='complete-area'>
         <p className='title' >Completed TODO</p>
         <ul>
-          <div className='list-row' >
-            <li>todo 3</li>
-            <button>Return</button>
-          </div>
+          {completeTodos.map((todo) => {
+            return (
+              <div  key={todo} className='list-row' >
+                <li>{todo}</li>
+                <button>Return</button>
+              </div>
+            )
+          })}
         </ul>
       </div>
     </>

@@ -30,6 +30,15 @@ export const App = () => {
     setcompleteTodos(newCompleteTodos)
   }
 
+  const onClickBack = (index) => {
+    const newCompleteTodos= [...completeTodos]
+    newCompleteTodos.splice(index, 1)
+
+    const newIncompleteTodos = [...incompleteTodos, completeTodos[index]]
+    setcompleteTodos(newCompleteTodos)
+    setIncompleteTodos(newIncompleteTodos)
+  }
+
 
   return (
     <>
@@ -59,11 +68,11 @@ export const App = () => {
       <div className='complete-area'>
         <p className='title' >Completed TODO</p>
         <ul>
-          {completeTodos.map((todo) => {
+          {completeTodos.map((todo, index) => {
             return (
               <div  key={todo} className='list-row' >
                 <li>{todo}</li>
-                <button>Return</button>
+                <button onClick={() => onClickBack(index)} >Return</button>
               </div>
             )
           })}

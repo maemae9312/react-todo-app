@@ -3,8 +3,8 @@ import './App.css'
 
 export const App = () => {
   const [todoText, setTodoText] = useState('')
-  const [incompleteTodos, setIncompleteTodos] = useState(['todo 1', 'todo 2'])
-  const [completeTodos, setcompleteTodos] = useState(['todo 3'])
+  const [incompleteTodos, setIncompleteTodos] = useState([])
+  const [completeTodos, setcompleteTodos] = useState([])
 
   const onChangeTodoText = (e) => setTodoText(e.target.value)
 
@@ -28,6 +28,15 @@ export const App = () => {
     const newCompleteTodos = [...completeTodos, incompleteTodos[index]]
     setIncompleteTodos(newIncompleteTodos)
     setcompleteTodos(newCompleteTodos)
+  }
+
+  const onClickBack = (index) => {
+    const newCompleteTodos= [...completeTodos]
+    newCompleteTodos.splice(index, 1)
+
+    const newIncompleteTodos = [...incompleteTodos, completeTodos[index]]
+    setcompleteTodos(newCompleteTodos)
+    setIncompleteTodos(newIncompleteTodos)
   }
 
 
@@ -59,11 +68,11 @@ export const App = () => {
       <div className='complete-area'>
         <p className='title' >Completed TODO</p>
         <ul>
-          {completeTodos.map((todo) => {
+          {completeTodos.map((todo, index) => {
             return (
               <div  key={todo} className='list-row' >
                 <li>{todo}</li>
-                <button>Return</button>
+                <button onClick={() => onClickBack(index)} >Return</button>
               </div>
             )
           })}

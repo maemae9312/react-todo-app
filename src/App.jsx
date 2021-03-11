@@ -3,8 +3,8 @@ import './App.css'
 
 export const App = () => {
   const [todoText, setTodoText] = useState('')
-  const [incompleteTodos, setIncompleteTodos] = useState(['todo 1', 'todo 2'])
-  const [completeTodos, setcompleteTodos] = useState(['todo 3'])
+  const [incompleteTodos, setIncompleteTodos] = useState([])
+  const [completeTodos, setcompleteTodos] = useState([])
 
   const onChangeTodoText = (e) => setTodoText(e.target.value)
 
